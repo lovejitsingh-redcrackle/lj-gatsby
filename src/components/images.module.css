@@ -1,0 +1,11 @@
+.single_img {
+  border: 2px solid red;
+  width: 100%;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.cur_img {
+  margin: 0 auto;
+  width: 100%;
+}
