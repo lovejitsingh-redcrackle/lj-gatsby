@@ -28,7 +28,7 @@ const ComponentName = ({ data }) => {
                 </td>
               </tr>
             )
-          })}{" "}
+          })}
         </tbody>
       </table>
     </Layout>
