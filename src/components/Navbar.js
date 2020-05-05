@@ -1,28 +1,18 @@
 import React from "react"
 import { Link } from "gatsby"
+import links from "../constants/links.js"
 
 const Navbar = () => {
   return (
     <nav>
       <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/products">Products</Link>
-        </li>
-        <li>
-          <Link to="/blog">Blog</Link>
-        </li>
-        <li>
-          <Link to="/examples">Examples</Link>
-        </li>
-        <li>
-          <Link to="/images">Images</Link>
-        </li>
-        <li>
-          <Link to="/articles">Articles</Link>
-        </li>
+        {links.map((item, index) => {
+          return (
+            <li key={index}>
+              <Link to={item.path}>{item.text}</Link>
+            </li>
+          )
+        })}
       </ul>
     </nav>
   )
