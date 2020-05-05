@@ -7,7 +7,6 @@ const ComponentName = ({ data }) => {
   const {
     allNode: { nodes: articles },
   } = data
-  //console.log(articles)
 
   return (
     <Layout>
