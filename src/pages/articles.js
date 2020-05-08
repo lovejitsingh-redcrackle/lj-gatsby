@@ -10,10 +10,11 @@ const ComponentName = ({ data }) => {
 
   return (
     <Layout>
-      <table>
+      <table className="table">
         <thead>
           <tr>
             <th>Title</th>
+            <th>Content type</th>
           </tr>
         </thead>
         <tbody>
@@ -21,9 +22,20 @@ const ComponentName = ({ data }) => {
             return (
               <tr key={article.data.nid}>
                 <td>
-                  <Link to={"/node/" + article.data.nid}>
+                  {article.data.type === 'page' && (
+                  <Link to={"/page/" + article.data.nid}>
                     {article.data.title}
                   </Link>
+                  )}
+
+                  {article.data.type === 'article' && (
+                  <Link to={"/article/" + article.data.nid}>
+                    {article.data.title}
+                  </Link>
+                  )}
+                </td>
+                <td>
+                    {article.data.type}
                 </td>
               </tr>
             )

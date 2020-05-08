@@ -17,6 +17,7 @@ module.exports = {
 
   /* Your site config here */
   plugins: [
+    `gatsby-plugin-react-helmet`,
     `gatsby-plugin-styled-components`,
     {
       resolve: `gatsby-source-filesystem`,
@@ -43,9 +44,24 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-source-custom-api",
+      options: {
+        url: "https://dev-gatsby-lj-d7.pantheonsite.io/api/articles/file.json",
+      },
+      rootKey: "images",
+      schemas: {
+        images: `
+            url: String
+            modified: Int
+        `,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
     `gatsby-plugin-playground`,
+    `gatsby-plugin-mdx`,
+    `gatsby-plugin-transition-link`,
   ],
 }

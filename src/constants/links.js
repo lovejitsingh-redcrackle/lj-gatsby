@@ -23,4 +23,8 @@ export default [
     path: "/blog-list",
     text: "Pagination",
   },
+  {
+    path: "/contact",
+    text: "Contact",
+  },
 ]

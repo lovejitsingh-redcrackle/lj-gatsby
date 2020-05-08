@@ -15,12 +15,47 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  result.data.allNode.articles.forEach(article => {
+  const result_page = await graphql(`
+    query GetNodes {
+      allNode(filter: {data: {type: {eq: "page"}}}) {
+        pages: nodes {
+          data {
+            nid
+          }
+        }
+      }
+    }
+  `)
+
+  const result_article = await graphql(`
+    query GetNodes {
+      allNode(filter: {data: {type: {eq: "article"}}}) {
+        articles: nodes {
+          data {
+            nid
+          }
+        }
+      }
+    }
+  `)
+  // Article template
+  result_article.data.allNode.articles.forEach(article => {
     createPage({
-      path: `/node/${article.data.nid}`,
+      path: `/article/${article.data.nid}`,
       component: path.resolve(`src/templates/article-template.js`),
       context: {
         nid: article.data.nid,
+      },
+    })
+  })
+
+  // Page type template
+  result_page.data.allNode.pages.forEach(page => {
+    createPage({
+      path: `/page/${page.data.nid}`,
+      component: path.resolve(`src/templates/page-template.js`),
+      context: {
+        nid: page.data.nid,
       },
     })
   })

@@ -1,5 +1,5 @@
 import React from "react"
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 import links from "../constants/links.js"
 
 const Navbar = () => {
@@ -9,7 +9,9 @@ const Navbar = () => {
         {links.map((item, index) => {
           return (
             <li key={index}>
-              <Link to={item.path}>{item.text}</Link>
+              <AniLink fade to={item.path}>
+                {item.text}
+              </AniLink>
             </li>
           )
         })}

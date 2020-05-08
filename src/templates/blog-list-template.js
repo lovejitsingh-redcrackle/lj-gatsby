@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import Layout from "../components/layout"
-import { Link } from "gatsby"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 const ComponentName = props => {
   const { currentPage, numPages } = props.pageContext
@@ -19,13 +19,14 @@ const ComponentName = props => {
       <pre>{JSON.stringify(data, null, 4)}</pre>
       <ul>
         {!isFirst && (
-          <Link to={prevPage} rel="prev">
+          <AniLink fade to={prevPage} rel="prev">
             ← Previous Page
-          </Link>
+          </AniLink>
         )}
         {Array.from({ length: numPages }, (_, i) => (
           <li key={`pagination-number${i + 1}`}>
-            <Link
+            <AniLink
+              fade
               to={`/blog-list/${i === 0 ? "" : i + 1}`}
               style={{
                 textDecoration: "none",
@@ -34,13 +35,13 @@ const ComponentName = props => {
               }}
             >
               {i + 1}
-            </Link>
+            </AniLink>
           </li>
         ))}
         {!isLast && (
-          <Link to={nextPage} rel="next">
+          <AniLink fade to={nextPage} rel="next">
             Next Page →
-          </Link>
+          </AniLink>
         )}
       </ul>
     </Layout>
